@@ -8,17 +8,6 @@
 #include "my.h"
 #include "gen_sol_header.h"
 
-int gestion_erreur (int ac, char **av)                                          // others arguments ?
-{
-    if (ac < 2 || ac > 4)
-        return 1;
-    if (!my_isnbr(av[1]) || !my_isnbr(av[2]))
-        return 2;
-    if (ac == 4 && my_strvcmp(av[3], "perfect"))
-        return 3;
-    return 0;
-}
-
 // X = wall
 // * = free spaces
 
@@ -34,6 +23,19 @@ char **fully_maze (int lignes, int cols)
     return maze;
 }
 
+// recursive backtracker
+
+void dig_the_wall (char **maze)
+{
+    char space = '*';
+    maze[0][0] = space;
+    if (random_int(0, 1)) {
+        maze[0][1] = space;
+    } else {
+        maze[1][0] = space;
+    }
+}
+
 void create_maze (char **av)
 {
     int perfect = 0, lignes, cols;
@@ -42,12 +44,16 @@ void create_maze (char **av)
     lignes = my_getnbr(av[1]);
     cols = my_getnbr(av[2]);
     char **maze = fully_maze(lignes, cols);
+
+    dig_the_wall(maze);
+
     my_show_word_array(maze);
     free_my_arr(maze);
 }
 
 int main (int ac, char **av)
 {
+    srand(time(NULL));
     if (gestion_erreur(ac, av))
         return 84;
     create_maze(av);

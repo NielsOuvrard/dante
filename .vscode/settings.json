@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "gen_sol_header.h": "c"
+        "gen_sol_header.h": "c",
+        "math.h": "c"
     }
 }
