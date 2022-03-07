@@ -25,11 +25,11 @@ int gestion_erreur (int ac, char **av)                                          
 char **fully_maze (int lignes, int cols)
 {
     char **maze = malloc(sizeof(char *) * (lignes + 1));
-    maze[lignes + 1] = NULL;
+    maze[lignes] = NULL;
     for (int i = 0; i < lignes; i++) {
         maze[i] = malloc(sizeof(char) * (cols + 1));
         my_memset(maze[i], cols, 'X');
-        maze[i][cols + 1] = '\0';
+        maze[i][cols] = '\0';
     }
     return maze;
 }
