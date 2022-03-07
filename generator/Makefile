@@ -9,8 +9,8 @@ all:
 		@cp ./../lib/my/my.h ../include/my.h
 		@gcc -c ../lib/my/*.c
 		@ar rc ../lib/my/libmy.a *.o
-		@gcc -o solver -g ../src_solver/*.c -I./../include/ -L./../lib/my/ -lmy -g3
-		@chmod 777 solver
+		@gcc -o generator -g ../src_generator/*.c -I./../include/ -L./../lib/my/ -lmy -g3
+		@chmod 777 generator
 		@make clean
 
 clean:
@@ -19,7 +19,7 @@ clean:
 fclean:
 		@rm lib/my/libmy.a
 		@rm lib/libmy.a
-		@rm solver
+		@rm generator
 
 re:	fclean all
 

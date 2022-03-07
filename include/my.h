@@ -4,7 +4,6 @@
 ** File description:
 ** fichier include de qualité
 */
-
 #pragma once
 #define CTOI(x) ((x) - '0')
 #define ITOC(x) ((x) + '0')
