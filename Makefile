@@ -6,10 +6,10 @@
 ##
 
 all:
-		# #cp ./lib/my/my.h include/my.h
-		# @gcc -c lib/my/*.c
-		# @ar rc lib/my/libmy.a *.o
-		# @cp ./lib/my/libmy.a lib/libmy.a
+		cp ./lib/my/my.h include/my.h
+		@gcc -c lib/my/*.c
+		@ar rc lib/my/libmy.a *.o
+		@cp ./lib/my/libmy.a lib/libmy.a
 		# @gcc -o maze -g src/*.c -I./include/ -L./lib/my/ -lm -lmy -g3
 
 		@gcc -o generator_ -g src_generator/*.c -I./include/ -L./lib/my/ -lmy -g3

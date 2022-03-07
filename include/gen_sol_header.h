@@ -11,3 +11,5 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <math.h>
+
+char **filepath_to_arr (char *filepath);
