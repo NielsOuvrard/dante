@@ -14,7 +14,7 @@ int gestion_erreur (int ac, char **av)                                          
         return 1;
     if (!my_isnbr(av[1]) || !my_isnbr(av[2]))
         return 2;
-    if (ac == 4 && my_strvcmp(av[2], "perfect"))
+    if (ac == 4 && my_strvcmp(av[3], "perfect"))
         return 3;
     return 0;
 }
@@ -37,7 +37,7 @@ char **fully_maze (int lignes, int cols)
 void create_maze (char **av)
 {
     int perfect = 0, lignes, cols;
-    if (my_arraylen(av) > 2)
+    if (my_arraylen(av) > 3)
         perfect = 1;
     lignes = my_getnbr(av[1]);
     cols = my_getnbr(av[2]);
