@@ -8,9 +8,6 @@
 #include "my.h"
 #include "gen_sol_header.h"
 
-// X = wall
-// * = free spaces
-
 char **fully_maze (int lignes, int cols)
 {
     char **maze = malloc(sizeof(char *) * (lignes + 1));
@@ -42,6 +39,23 @@ void dig_the_wall (char **maze)
     // maze[max_cols - 2][max_lignes] = '*';                                    // last *
 }
 
+void disp_the_maze (char **maze)
+{
+    for (int i = 0; maze[i] != NULL; i++) {
+        my_putstr(maze[i]);
+        // for (int k = 0; maze[i][k] != '\0'; k++) {
+        //     if (maze[i][k] == 'X')
+        //         my_putstr("\e[94mX");
+        //     else if (maze[i][k] == '*')
+        //         // my_putstr(" ");
+        //         my_putstr("\e[92m*");
+        //     else
+        //         my_putchar(maze[i][k]);
+        // }
+        my_putchar('\n');
+    }
+}
+
 int create_maze (char **av)
 {
     srand(time(NULL));
@@ -52,17 +66,7 @@ int create_maze (char **av)
     cols = my_getnbr(av[2]);
     char **maze = fully_maze(lignes, cols);
     dig_the_wall(maze);
-    for (int i = 0; maze[i] != NULL; i++) {
-        for (int k = 0; maze[i][k] != '\0'; k++) {
-            if (maze[i][k] == 'X')
-                my_putstr("\e[94mX");
-            else if (maze[i][k] == '*')
-                my_putstr("\e[92m*");
-            else
-                my_putchar(maze[i][k]);
-        }
-        my_putchar('\n');
-    }
+    disp_the_maze(maze);
     // my_putstr("[\e[94mMAXI\e[92mshell\e[0m]$ ");
     // my_show_word_array(maze);
     free_my_arr(maze);
