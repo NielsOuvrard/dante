@@ -41,6 +41,4 @@ int free_linked_list_tt (three_tree *list);
 
 // recursive
 
-// int recursive_dig (char **maze, three_tree *three, int max_lignes, int max_cols);
-three_tree *recursive_dig (char **maze, three_tree *three, int max_lignes, int max_cols);
-
+three_tree *recursive_dig (char **maze, three_tree *three);
