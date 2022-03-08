@@ -67,7 +67,6 @@ int my_put_end_list (three_tree *list, int x, int y, char prev)
     return (0);
 }
 
-
 int free_linked_list_tt (three_tree *list)
 {
     if (list->east) {
