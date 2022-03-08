@@ -14,11 +14,13 @@
 #include <stdlib.h>
 
 typedef struct three_tree {
+    char prev;
     int x;
     int y;
-    struct three_tree *left;
-    struct three_tree *up;
-    struct three_tree *right;
+    struct three_tree *north;
+    struct three_tree *south;
+    struct three_tree *east;
+    struct three_tree *west;
 } three_tree;
 
 char **filepath_to_arr (char *filepath);
@@ -28,3 +30,17 @@ char **filepath_to_arr (char *filepath);
 int random_int (int min, int max);
 
 int gestion_erreur (int ac, char **av);
+
+// linked list tt
+
+three_tree *my_put_in_list (three_tree *list, int x, int y, char suiv);
+
+int my_put_end_list (three_tree *list, int x, int y, char prev);
+
+int free_linked_list_tt (three_tree *list);
+
+// recursive
+
+// int recursive_dig (char **maze, three_tree *three, int max_lignes, int max_cols);
+three_tree *recursive_dig (char **maze, three_tree *three, int max_lignes, int max_cols);
+

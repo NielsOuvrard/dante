@@ -17,30 +17,83 @@
 //     *head = element;
 // }
 
-int my_put_in_list (three_tree **list, int x, int y)
+three_tree *my_put_in_list (three_tree *list, int x, int y, char suiv)
 {
     three_tree *element;
     element = malloc(sizeof(three_tree));
     element->x = x;
     element->y = y;
-    element->left = NULL;
-    element->up = NULL;
-    element->right = NULL;
-    *list = element;
+    element->north = NULL;
+    element->south = NULL;
+    element->east = NULL;
+    element->west = NULL;
+    element->prev = suiv;
+    if (suiv == 'n') {
+        element->north = list;
+    } else if (suiv == 's') {
+        element->south = list;
+    }
+    if (suiv == 'e') {
+        element->east = list;
+    } else if (suiv == 'w') {
+        element->west = list;
+    }
+    list = element;
+    return element;
+}
+
+int my_put_end_list (three_tree *list, int x, int y, char prev)
+{
+    three_tree *element;
+    element = malloc(sizeof(three_tree));
+    element->x = x;
+    element->y = y;
+    element->north = NULL;
+    element->south = NULL;
+    element->east = NULL;
+    element->west = NULL;
+    element->prev = prev;
+    if (prev == 'n') {
+        list->north = element;
+    } else if (prev == 's') {
+        list->south = element;
+    }
+    if (prev == 'e') {
+        list->east = element;
+    } else if (prev == 'w') {
+        list->west = element;
+    }
+    // if (value == 1)
+    //     list->left = element;
+    // else if (value == 2)
+    //     list->up = element;
+    // else
+    //     list->right = element;
     return (0);
 }
 
 int free_linked_list_tt (three_tree *list)
 {
-    if (list->left)
-        return free_linked_list_tt(list->left);
-    if (list->up)
-        return free_linked_list_tt(list->up);
-    if (list->right)
-        return free_linked_list_tt(list->right);
-    three_tree *tmp = list;
-    list = list->up;
-    free(list);
+    if (list->east) {
+        three_tree *tmp = list->east;
+        free(list);
+        return free_linked_list_tt(tmp);
+    }
+    if (list->west) {
+        three_tree *tmp = list->west;
+        free(list);
+        return free_linked_list_tt(tmp);
+    }
+    if (list->north) {
+        three_tree *tmp = list->north;
+        free(list);
+        return free_linked_list_tt(tmp);
+    }
+    if (list->south) {
+        three_tree *tmp = list->south;
+        free(list);
+        return free_linked_list_tt(tmp);
+    }
     return 0;
 }
 

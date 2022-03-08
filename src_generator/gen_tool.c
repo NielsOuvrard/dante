@@ -10,8 +10,7 @@
 
 int random_int (int min, int max)
 {
-    int retour = min + (rand() % ((max + 1) * 1000));
-    retour /= 1000;
+    int retour = min + (rand() % (max + 1));
     return retour;
 }
 
