@@ -67,27 +67,51 @@ int my_put_end_list (three_tree *list, int x, int y, char prev)
     return (0);
 }
 
+
 int free_linked_list_tt (three_tree *list)
 {
     if (list->east) {
-        three_tree *tmp = list->east;
-        free(list);
-        return free_linked_list_tt(tmp);
+        list->east->west = NULL;
+        free_linked_list_tt(list->east);
     }
     if (list->west) {
-        three_tree *tmp = list->west;
-        free(list);
-        return free_linked_list_tt(tmp);
+        list->west->east = NULL;
+        free_linked_list_tt(list->west);
     }
     if (list->north) {
-        three_tree *tmp = list->north;
-        free(list);
-        return free_linked_list_tt(tmp);
+        list->north->south = NULL;
+        free_linked_list_tt(list->north);
     }
     if (list->south) {
-        three_tree *tmp = list->south;
-        free(list);
-        return free_linked_list_tt(tmp);
+        list->south->north = NULL;
+        free_linked_list_tt(list->south);
     }
+    free(list);
     return 0;
 }
+
+
+// int free_linked_list_tt (three_tree *list)
+// {
+//     if (list->east) {
+//         three_tree *tmp = list->east;
+//         free(list);
+//         return free_linked_list_tt(tmp);
+//     }
+//     if (list->west) {
+//         three_tree *tmp = list->west;
+//         free(list);
+//         return free_linked_list_tt(tmp);
+//     }
+//     if (list->north) {
+//         three_tree *tmp = list->north;
+//         free(list);
+//         return free_linked_list_tt(tmp);
+//     }
+//     if (list->south) {
+//         three_tree *tmp = list->south;
+//         free(list);
+//         return free_linked_list_tt(tmp);
+//     }
+//     return 0;
+// }

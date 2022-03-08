@@ -67,7 +67,6 @@ int create_maze (char **av)
     char **maze = fully_maze(lignes, cols);
     dig_the_wall(maze);
     disp_the_maze(maze);
-    // my_putstr("[\e[94mMAXI\e[92mshell\e[0m]$ ");
     // my_show_word_array(maze);
     free_my_arr(maze);
     return 0;
