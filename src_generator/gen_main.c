@@ -33,7 +33,7 @@ void dig_the_wall (char **maze)
         three_tree *three = NULL;
         three = my_put_in_list(three, 1, 1, 'n');
         recursive_dig(maze, three);
-        free_linked_list_tt(three);
+        // free_linked_list_tt(three);
     }
     // int max_cols = my_strlen(maze[0]), max_lignes = my_arraylen(maze);
     // maze[max_cols - 2][max_lignes] = '*';                                    // last *

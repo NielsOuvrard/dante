@@ -58,16 +58,20 @@ int my_put_end_list (three_tree *list, int x, int y, char prev)
     // element->prev = prev;
     if (prev == 'n') {
         element->prev = 's';
+        element->south = list;
         list->north = element;
     } else if (prev == 's') {
         element->prev = 'n';
+        element->north = list;
         list->south = element;
     }
     if (prev == 'e') {
         element->prev = 'w';
+        element->west = list;
         list->east = element;
     } else if (prev == 'w') {
         element->prev = 'e';
+        element->east = list;
         list->west = element;
     }
     // if (value == 1)
