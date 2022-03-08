@@ -49,7 +49,19 @@ int create_maze (char **av)
     cols = my_getnbr(av[2]);
     char **maze = fully_maze(lignes, cols);
     dig_the_wall(maze);
-    my_show_word_array(maze);
+    for (int i = 0; maze[i] != NULL; i++) {
+        for (int k = 0; maze[i][k] != '\0'; k++) {
+            if (maze[i][k] == 'X')
+                my_putstr("\e[94mX");
+            else if (maze[i][k] == '*')
+                my_putstr("\e[92m*");
+            else
+                my_putchar(maze[i][k]);
+        }
+        my_putchar('\n');
+    }
+    // my_putstr("[\e[94mMAXI\e[92mshell\e[0m]$ ");
+    // my_show_word_array(maze);
     free_my_arr(maze);
     return 0;
 }

@@ -27,15 +27,18 @@ three_tree *my_put_in_list (three_tree *list, int x, int y, char suiv)
     element->south = NULL;
     element->east = NULL;
     element->west = NULL;
-    element->prev = suiv;
     if (suiv == 'n') {
+        element->prev = 's';
         element->north = list;
     } else if (suiv == 's') {
+        element->prev = 'n';
         element->south = list;
     }
     if (suiv == 'e') {
+        element->prev = 'w';
         element->east = list;
     } else if (suiv == 'w') {
+        element->prev = 'e';
         element->west = list;
     }
     list = element;
@@ -52,15 +55,19 @@ int my_put_end_list (three_tree *list, int x, int y, char prev)
     element->south = NULL;
     element->east = NULL;
     element->west = NULL;
-    element->prev = prev;
+    // element->prev = prev;
     if (prev == 'n') {
+        element->prev = 's';
         list->north = element;
     } else if (prev == 's') {
+        element->prev = 'n';
         list->south = element;
     }
     if (prev == 'e') {
+        element->prev = 'w';
         list->east = element;
     } else if (prev == 'w') {
+        element->prev = 'e';
         list->west = element;
     }
     // if (value == 1)
