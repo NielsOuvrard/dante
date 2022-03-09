@@ -42,16 +42,16 @@ void dig_the_wall (char **maze)
 void disp_the_maze (char **maze)
 {
     for (int i = 0; maze[i] != NULL; i++) {
-        // my_putstr(maze[i]);
-        for (int k = 0; maze[i][k] != '\0'; k++) {
-            if (maze[i][k] == 'X')
-                my_putstr("\e[94mX");
-            else if (maze[i][k] == '*')
-                // my_putstr(" ");
-                my_putstr("\e[92m*");
-            else
-                my_putchar(maze[i][k]);
-        }
+        my_putstr(maze[i]);
+        // for (int k = 0; maze[i][k] != '\0'; k++) {
+        //     if (maze[i][k] == 'X')
+        //         my_putstr("\e[94mX");
+        //     else if (maze[i][k] == '*')
+        //         // my_putstr(" ");
+        //         my_putstr("\e[92m*");
+        //     else
+        //         my_putchar(maze[i][k]);
+        // }
         my_putchar('\n');
     }
 }
