@@ -23,7 +23,25 @@ typedef struct three_tree {
     struct three_tree *west;
 } three_tree;
 
+typedef struct list_solve {
+    int x;
+    int y;
+    char dir;
+    struct list_solve* next;
+    struct list_solve* prev;
+} list_solve;
+
+// * ///////////////////////// SOLVER
+
 char **filepath_to_arr (char *filepath);
+
+list_solve *my_put_in_solve (list_solve *list, int x, int y);
+
+int my_put_end_solve (list_solve *list, int x, int y, char dir);
+
+int free_linked_list_solve (list_solve *list);
+
+// * ///////////////////////// GENERATOR
 
 // tools
 
