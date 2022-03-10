@@ -29,8 +29,11 @@ void dig_the_wall (char **maze)
         maze[1][1] = '*';
         three_tree *three = NULL;
         three = my_put_in_list(three, 1, 1, 'n');
+        three_tree *begin = three;
+        // while ((three = recursive_dig(maze, three)));
         recursive_dig(maze, three);
-        free_linked_list_tt(three);
+        free_linked_list_tt(begin);
+        // free_linked_list_tt(three);
     }
     if (maze[max_lignes - 2][max_cols - 1] != '*')
         maze[max_lignes - 1][max_cols - 2] = '*';

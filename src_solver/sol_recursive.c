@@ -42,7 +42,6 @@ list_solve *looking_for_new_way_solver (char **maze, list_solve *solve)
     if (!solve)
         return NULL;
     return NULL;
-    // return recursive_dig(maze, solve);
 }
 
 // int check_in_front (char **maze, list_solve *solve, char direction)

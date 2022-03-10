@@ -100,11 +100,11 @@ three_tree *looking_for_new_way (char **maze, three_tree *three)
         // dump_three(three);
         // my_printf("test\n");
         if (three && three->x == 1 && three->y == 1)
-            return three;
+            return NULL;
     }
     if (!three)
         return NULL;
-    return recursive_dig(maze, three);
+    return three; //recursive_dig(maze, three);
 }
 
 three_tree *retry (char **maze, three_tree *three)
@@ -119,14 +119,6 @@ three_tree *retry (char **maze, three_tree *three)
     } else if (!three->west && is_okay_to_dig(maze, three, 'w')) {
         return west_dir(maze, three);
     }
-    // if ((three->prev == 'n' && three->north == NULL) || (three->prev == 's' && three->south == NULL)
-    // || (three->prev == 'e' && three->east == NULL) || (three->prev == 'w' && three->west == NULL)) {
-    //     my_printf("ende en : y = %d\t", three->y);
-    //     my_printf("x = %d\n", three->x);
-    //     my_printf("prev : %c\n", three->prev);
-    // }
-    // my_putstr("bizzare retry\n");
-    // return three;
     return looking_for_new_way(maze, three);
 }
 
@@ -136,7 +128,8 @@ three_tree *north_dir (char **maze, three_tree *three)
         // my_putstr("n\t");
         maze[three->y - 1][three->x] = '*';
         my_put_end_list(three, three->x, three->y - 1, 'n');
-        return recursive_dig(maze, three->north);
+        // return recursive_dig(maze, three->north);
+        return three->north;
     }
     return retry(maze, three);
 }
@@ -147,7 +140,8 @@ three_tree *east_dir (char **maze, three_tree *three)
         // my_putstr("e\t");
         maze[three->y][three->x + 1] = '*';
         my_put_end_list(three, three->x + 1, three->y, 'e');
-        return recursive_dig(maze, three->east);
+        // return recursive_dig(maze, three->east);
+        return three->east;
     }
     return retry(maze, three);
 }
@@ -158,7 +152,8 @@ three_tree *south_dir (char **maze, three_tree *three)
         // my_putstr("s\t");
         maze[three->y + 1][three->x] = '*';
         my_put_end_list(three, three->x, three->y + 1, 's');
-        return recursive_dig(maze, three->south);
+        // return recursive_dig(maze, three->south);                // !
+        return three->south;
     }
     return retry(maze, three);
 }
@@ -169,7 +164,8 @@ three_tree *west_dir (char **maze, three_tree *three)
         // my_putstr("w\t");
         maze[three->y][three->x - 1] = '*';
         my_put_end_list(three, three->x - 1, three->y, 'w');
-        return recursive_dig(maze, three->west);
+        // return recursive_dig(maze, three->west);
+        return three->west;
     }
     return retry(maze, three);
 }
@@ -181,39 +177,42 @@ three_tree *recursive_dig (char **maze, three_tree *three)
     if (!three)
         return three;
     // dump_three(three);
-    int rando = random_int(1, 2);
     // my_printf("rando : %d\n", rando);
-    if (three->prev == 'n') {
-        if (rando == 1)
-            return east_dir(maze, three);
-        else if (rando == 2)
-            return south_dir(maze, three);
-        else
-            return west_dir(maze, three);
-    } else if (three->prev == 's') {
-        if (rando == 1)
-            return north_dir(maze, three);
-        else if (rando == 2)
-            return east_dir(maze, three);
-        else
-            return west_dir(maze, three);
+    while (three && three->prev) {
+        // my_printf("a\n");
+        // my_show_word_array(maze);
+        int rando = random_int(1, 2);
+        if (three->prev == 'n') {
+            if (rando == 1)
+                three = east_dir(maze, three);
+            else if (rando == 2)
+                three = south_dir(maze, three);
+            else
+                three = west_dir(maze, three);
+        } else if (three->prev == 's') {
+            if (rando == 1)
+                three = north_dir(maze, three);
+            else if (rando == 2)
+                three = east_dir(maze, three);
+            else
+                three = west_dir(maze, three);
+        } else if (three->prev == 'e') {
+            if (rando == 1)
+                three = north_dir(maze, three);
+            else if (rando == 2)
+                three = south_dir(maze, three);
+            else
+                three = west_dir(maze, three);
+        } else if (three->prev == 'w') {
+            if (rando == 1)
+                three = north_dir(maze, three);
+            else if (rando == 2)
+                three = east_dir(maze, three);
+            else
+                three = south_dir(maze, three);
+        }
     }
-    if (three->prev == 'e') {
-        if (rando == 1)
-            return north_dir(maze, three);
-        else if (rando == 2)
-            return south_dir(maze, three);
-        else
-            return west_dir(maze, three);
-    } else if (three->prev == 'w') {
-        if (rando == 1)
-            return north_dir(maze, three);
-        else if (rando == 2)
-            return east_dir(maze, three);
-        else
-            return south_dir(maze, three);
-    }
-    return three;
+    return NULL;
 }
 
 // php 7.4.27
