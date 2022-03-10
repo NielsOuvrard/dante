@@ -10,8 +10,7 @@
 
 list_solve *my_put_in_solve (list_solve *list, int x, int y)
 {
-    list_solve *element;
-    element = malloc(sizeof(list_solve));
+    list_solve *element = malloc(sizeof(list_solve));
     element->x = x;
     element->y = y;
     element->next = list;

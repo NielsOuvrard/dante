@@ -33,13 +33,39 @@ typedef struct list_solve {
 
 // * ///////////////////////// SOLVER
 
-char **filepath_to_arr (char *filepath);
-
 list_solve *my_put_in_solve (list_solve *list, int x, int y);
 
 int my_put_end_solve (list_solve *list, int x, int y, char dir);
 
 int free_linked_list_solve (list_solve *list);
+
+// ok to navigate
+
+int ok_to_north (char **maze, list_solve *solve);
+
+int ok_to_south (char **maze, list_solve *solve);
+
+int ok_to_east (char **maze, list_solve *solve);
+
+int ok_to_west (char **maze, list_solve *solve);
+
+// turn to
+
+int turn_to_north (char **maze, list_solve *solve);
+
+int turn_to_south (char **maze, list_solve *solve);
+
+int turn_to_east (char **maze, list_solve *solve);
+
+int turn_to_west (char **maze, list_solve *solve);
+
+// recursive
+
+int recursive_solver (char **maze, list_solve *solve);
+
+// open file
+
+char **filepath_to_arr (char *filepath);
 
 // * ///////////////////////// GENERATOR
 

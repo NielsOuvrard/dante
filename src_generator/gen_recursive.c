@@ -76,14 +76,27 @@ three_tree *looking_for_new_way (char **maze, three_tree *three)
     !is_okay_to_dig(maze, three, 'e') && !is_okay_to_dig(maze, three, 'n') &&
     !is_okay_to_dig(maze, three, 's')) {
         // dump_three(three);
-        if (three->prev == 'n')
+        if (three->prev == 'n') {
+            three->north->south = NULL;
+            three_tree *tmp = three;
             three = three->north;
-        else if (three->prev == 's')
+            free(tmp);
+        } else if (three->prev == 's') {
+            three->south->north = NULL;
+            three_tree *tmp = three;
             three = three->south;
-        else if (three->prev == 'e')
+            free(tmp);
+        } else if (three->prev == 'e') {
+            three->east->west = NULL;
+            three_tree *tmp = three;
             three = three->east;
-        else
+            free(tmp);
+        } else {
+            three->west->east = NULL;
+            three_tree *tmp = three;
             three = three->west;
+            free(tmp);
+        }
         // dump_three(three);
         // my_printf("test\n");
         if (three && three->x == 1 && three->y == 1)
