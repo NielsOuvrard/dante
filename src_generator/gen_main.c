@@ -51,7 +51,8 @@ void disp_the_maze (char **maze)
         //     else
         //         my_putchar(maze[i][k]);
         // }
-        my_putchar('\n');
+        if (maze[i + 1])
+            my_putchar('\n');
     }
 }
 
