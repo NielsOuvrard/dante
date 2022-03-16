@@ -17,7 +17,7 @@ int is_accessible(t_par *par, int x, int y)
         return 0;
 }
 
-void check_allsquares(t_par *par, int x, int y)
+void check_allsquares (t_par *par, int x, int y)
 {
     check_up(x, y, par);
     check_down(x, y, par);

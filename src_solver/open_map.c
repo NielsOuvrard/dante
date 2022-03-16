@@ -26,6 +26,7 @@ char *get_map(char *path)
     int fd = open(path, O_RDONLY);
     read(fd, map, get_size(path));
     map[get_size(path)] = '\0';
+    close(fd);
     return map;
 }
 
@@ -46,7 +47,7 @@ char **map_to_arr(char *map)
     int k = 0;
     int z = 0;
     int y = 0;
-    char **arr = malloc(sizeof(char *) * get_lines_str(map));
+    char **arr = malloc(sizeof(char *) * (get_lines_str(map) + 1));
     for (int i = get_lines_str(map); i != 0 ; i--) {
         arr[j] = malloc(sizeof(char) * 1000);
         j++;

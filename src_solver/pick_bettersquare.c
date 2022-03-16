@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-void pick_square(t_par *par)
+void pick_square (t_par *par)
 {
     int x = 0;
     int y = 0;
@@ -26,7 +26,7 @@ void pick_square(t_par *par)
     par->current_x = x;
     par->current_y = y;
     par->nodes[par->current_y][par->current_x].visited = 1;
-    par->arr[par->current_y][par->current_x] = 'X';
-   // printf("Current x : %d\n Current y : %d", par->current_x, par->current_y);
+    // supprimé de list open
+    remove_open(par, x, y);
     return;
 }

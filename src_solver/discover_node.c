@@ -13,8 +13,10 @@ void discover_node(t_par *par, int x, int y, t_node *parent)
     get_hcost(par, x, y);
     get_gcost(par, x, y);
     get_fcosts(par, x, y);
-    par->arr[par->current_y][par->current_x] = 'O';
-    add_toopen(par->open, x, y);
+    // par->arr[par->current_y][par->current_x] = 'O';
+    // printf("%c\n", par->open ? 'Y' : 'N');
+    add_toopen(&par->open, x, y);
+    // printf("%c\n", par->open ? 'Y' : 'N');
 }
 
 int is_inopen(t_par *par, int x, int y)

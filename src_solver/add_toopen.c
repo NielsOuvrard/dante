@@ -7,23 +7,25 @@
 
 #include "my.h"
 
-void add_toopen(t_open *open, int x, int y)
+void add_toopen (t_open **open, int x, int y)
 {
     t_open *new_node = malloc(sizeof(t_open));
     new_node->x = x;
     new_node->y = y;
+    // printf("y %d, x %d \n", x, y);
     new_node->next = NULL;
-    if (open == NULL) {
-        open = new_node;
+    if (!(*open)) {
+        *open = new_node;
     } else {
-          while(open->next != NULL) {
-            open = open->next;
+        t_open *tmp = *open;
+          while (tmp->next != NULL) {
+            tmp = tmp->next;
         }
-        open->next = new_node;
+        tmp->next = new_node;
     }
 }
 
-int get_pos(t_par *par, int x, int y)
+int get_pos (t_par *par, int x, int y)
 {
     int i = 0;
     t_open *tmp = par->open;
@@ -36,7 +38,7 @@ int get_pos(t_par *par, int x, int y)
     return -1;
 }
 
-void remove_open(t_par *par, int x, int y)
+void remove_open (t_par *par, int x, int y)
 {
     int position = get_pos(par, x, y);
     if (position < 0) {
