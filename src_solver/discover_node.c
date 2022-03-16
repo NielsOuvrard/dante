@@ -5,18 +5,20 @@
 ** discover_node
 */
 
-#include "my.h"
+#include "solver.h"
 
 void discover_node(t_par *par, int x, int y, t_node *parent)
 {
+    if (par->nodes[y][x].parent)
+        return;
     par->nodes[y][x].parent = parent;
+    par->nodes[y][x].x = x;
+    par->nodes[y][x].y = y;
     get_hcost(par, x, y);
     get_gcost(par, x, y);
     get_fcosts(par, x, y);
-    // par->arr[par->current_y][par->current_x] = 'O';
-    // printf("%c\n", par->open ? 'Y' : 'N');
     add_toopen(&par->open, x, y);
-    // printf("%c\n", par->open ? 'Y' : 'N');
+    par->nodes[0][0].parent = NULL;
 }
 
 int is_inopen(t_par *par, int x, int y)
@@ -44,6 +46,7 @@ void check_cost(t_par *par, t_node *parent, int x, int y)
 {
     int tmp = parent->g_cost + 10;
     if (tmp > par->nodes[y][x].g_cost) {
+        par->nodes[0][0].parent = NULL;
         update_node(par, parent, x, y);
     }
 }

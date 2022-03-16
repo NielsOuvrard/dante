@@ -5,7 +5,7 @@
 ** malloc_list
 */
 
-#include "my.h"
+#include "solver.h"
 
 void malloc_list(t_par *par)
 {

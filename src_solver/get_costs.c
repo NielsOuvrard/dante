@@ -5,7 +5,7 @@
 ** get_hcost
 */
 
-#include "my.h"
+#include "solver.h"
 
 void get_hcost(t_par *par, int x, int y)
 {

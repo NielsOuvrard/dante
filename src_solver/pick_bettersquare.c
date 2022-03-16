@@ -5,7 +5,7 @@
 ** pick_bettersquare
 */
 
-#include "my.h"
+#include "solver.h"
 
 void pick_square (t_par *par)
 {
@@ -26,7 +26,6 @@ void pick_square (t_par *par)
     par->current_x = x;
     par->current_y = y;
     par->nodes[par->current_y][par->current_x].visited = 1;
-    // supprimé de list open
     remove_open(par, x, y);
     return;
 }

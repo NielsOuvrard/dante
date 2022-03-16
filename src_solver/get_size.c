@@ -5,7 +5,7 @@
 ** get_size
 */
 
-#include "my.h"
+#include "solver.h"
 
 int get_size(char *path)
 {

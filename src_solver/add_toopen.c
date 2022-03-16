@@ -5,20 +5,19 @@
 ** add_toopen
 */
 
-#include "my.h"
+#include "solver.h"
 
 void add_toopen (t_open **open, int x, int y)
 {
     t_open *new_node = malloc(sizeof(t_open));
     new_node->x = x;
     new_node->y = y;
-    // printf("y %d, x %d \n", x, y);
     new_node->next = NULL;
     if (!(*open)) {
         *open = new_node;
     } else {
         t_open *tmp = *open;
-          while (tmp->next != NULL) {
+        while (tmp->next != NULL) {
             tmp = tmp->next;
         }
         tmp->next = new_node;

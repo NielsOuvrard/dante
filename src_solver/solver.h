@@ -20,6 +20,8 @@ struct node {
     int h_cost;
     int visited;
     struct node *parent;
+    int x;
+    int y;
 } typedef t_node;
 
 struct open {
@@ -94,3 +96,13 @@ void pick_square(t_par *par);
 void astar(t_par *par);
 
 char **str_to_array (char *str);
+
+void write_tomap(t_par *par);
+
+void print_arr(t_par *par);
+
+int check_errors(int ac, char **av);
+
+int is_a_file(const char *path);
+
+int list_len (t_par *par);

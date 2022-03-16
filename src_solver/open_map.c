@@ -5,7 +5,7 @@
 ** open_map
 */
 
-#include "my.h"
+#include "solver.h"
 
 int get_lines_str(char *str)
 {

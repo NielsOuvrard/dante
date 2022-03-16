@@ -1,17 +1,19 @@
 /*
 ** EPITECH PROJECT, 2022
-** Astar2
+** src_solver
 ** File description:
-** my_arrlen
+** list_len
 */
 
 #include "solver.h"
 
-int my_arrlen(char **arr)
+int list_len (t_par *par)
 {
     int i = 0;
-    while (arr[i] != NULL) {
+    t_open *tmp = par->open;
+    while (tmp) {
         i++;
+        tmp = tmp->next;
     }
     return i;
 }

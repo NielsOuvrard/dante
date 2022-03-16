@@ -5,7 +5,7 @@
 ** get_end
 */
 
-#include "my.h"
+#include "solver.h"
 
 void get_endpos(t_par *par)
 {
