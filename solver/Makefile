@@ -17,8 +17,6 @@ clean:
 		@rm -f *.o
 
 fclean:
-		@rm lib/my/libmy.a
-		@rm lib/libmy.a
 		@rm solver
 
 re:	fclean all
