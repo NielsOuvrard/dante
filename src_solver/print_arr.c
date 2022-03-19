@@ -18,3 +18,18 @@ void print_arr(t_par *par)
         i++;
     }
 }
+
+void is_possible(t_par *par)
+{
+    return;
+}
+
+void free_list(t_par *par)
+{
+    return;
+}
+
+void initialize_nodes(t_par *par)
+{
+    return;
+}
