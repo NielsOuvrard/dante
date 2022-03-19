@@ -10,20 +10,20 @@
 void astar(t_par *par)
 {
     int i = 0;
-    while (list_len(par)) {
+    while (par->list_len != 0) {
         if (par->current_x == par->end_x - 1
         && par->current_y == par->end_y - 1) {
             i = 0;
             write_tomap(par);
             print_arr(par);
-            exit(11);
+            free_list(par);
         }
         pick_square(par);
         check_allsquares(par, par->current_x, par->current_y);
         i++;
     }
     printf("no solution found");
-    exit (0);
+    free_list(par);
 }
 
 t_par *initialise_struct_par (int ac, char **av)
@@ -36,14 +36,15 @@ t_par *initialise_struct_par (int ac, char **av)
     par->str_len = my_strlen(par->arr[0]);
     get_endpos(par);
     malloc_list(par);
+    initialize_nodes(par);
     par->current_x = 0;
     par->current_y = 0;
     par->nodes[0][0].g_cost = 0;
     par->nodes[0][0].x = 0;
     par->nodes[0][0].y = 0;
+    par->list_len = 0;
     par->nodes[0][0].parent = NULL;
-    check_allsquares(par, 0, 0);
-    remove_open(par, 0, 0);
+    is_possible(par);
     return par;
 }
 
@@ -54,6 +55,14 @@ int main (int ac, char **av)
     if (check_errors(ac, av) != 0)
         return 84;
     t_par *par = initialise_struct_par(ac, av);
+    if (par->is_possible == 0) {
+        printf("no solution found");
+        free_list(par);
+        free(par);
+        return 0;
+    }
+    check_allsquares(par, 0, 0);
+    remove_open(par, 0, 0);
     astar(par);
     return 0;
 }

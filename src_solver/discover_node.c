@@ -17,7 +17,7 @@ void discover_node(t_par *par, int x, int y, t_node *parent)
     get_hcost(par, x, y);
     get_gcost(par, x, y);
     get_fcosts(par, x, y);
-    add_toopen(&par->open, x, y);
+    add_toopen(&par->open, x, y, par);
     par->nodes[0][0].parent = NULL;
 }
 
@@ -25,6 +25,8 @@ int is_inopen(t_par *par, int x, int y)
 {
     t_open **temp = &par->open;
     t_open *tmp = *temp;
+    if (par->nodes[y][x].visited)
+        return 0;
     while (tmp != NULL) {
         if (tmp->x == x && tmp->y == y) {
             return 1;

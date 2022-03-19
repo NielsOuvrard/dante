@@ -22,6 +22,8 @@ struct node {
     struct node *parent;
     int x;
     int y;
+    int has_parent;
+    int opened;
 } typedef t_node;
 
 struct open {
@@ -41,13 +43,15 @@ struct par {
     int end_y;
     int current_x;
     int current_y;
+    int list_len;
+    int is_possible;
 } typedef t_par;
 
 int get_lines_str(char *str);
 
 char *get_map(char *path);
 
-int get_line_lenght(char *map, int pos);
+int get_line_lenght(char *map);
 
 char **map_to_arr(char *map);
 
@@ -67,7 +71,7 @@ void get_gcost(t_par *par, int x, int y);
 
 void get_fcosts(t_par *par, int x, int y);
 
-void add_toopen (t_open **open, int x, int y);
+void add_toopen (t_open **open, int x, int y, t_par *par);
 
 int is_inopen(t_par *par, int x, int y);
 
@@ -106,3 +110,13 @@ int check_errors(int ac, char **av);
 int is_a_file(const char *path);
 
 int list_len (t_par *par);
+
+void is_possible(t_par *par);
+
+void free_list(t_par *par);
+
+void initialize_nodes(t_par *par);
+
+void free_arr(t_par *par);
+
+void free_linked(t_par *par);

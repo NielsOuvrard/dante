@@ -7,12 +7,14 @@
 
 #include "solver.h"
 
-void add_toopen (t_open **open, int x, int y)
+void add_toopen (t_open **open, int x, int y, t_par *par)
 {
+    par->list_len += 1;
     t_open *new_node = malloc(sizeof(t_open));
     new_node->x = x;
     new_node->y = y;
     new_node->next = NULL;
+    par->nodes[y][x].opened = 1;
     if (!(*open)) {
         *open = new_node;
     } else {
@@ -46,6 +48,7 @@ void remove_open (t_par *par, int x, int y)
     t_open **open_list = &par->open;
     t_open *node = *open_list;
     t_open *tmp = node->next;
+    par->list_len -= 1;
     if (position == 0) {
         (*open_list) = (*open_list) ->next;
         return;
