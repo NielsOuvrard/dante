@@ -120,3 +120,5 @@ void initialize_nodes(t_par *par);
 void free_arr(t_par *par);
 
 void free_linked(t_par *par);
+
+void free_nodes(t_par *par);

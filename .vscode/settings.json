@@ -23,6 +23,7 @@
         "vector": "c",
         "memory": "c",
         "ios": "c",
-        "my.h": "c"
+        "my.h": "c",
+        "unistd.h": "c"
     }
 }
