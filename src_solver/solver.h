@@ -24,17 +24,29 @@ struct node {
     int y;
     int has_parent;
     int opened;
+    int initialize;
 } typedef t_node;
 
 struct open {
     int x;
     int y;
     struct open *next;
+    struct open *prev;
 } typedef t_open;
+
+struct my_open {
+    int x;
+    int y;
+} typedef t_myopen;
 
 struct par {
     t_node **nodes;
+    t_node best_node;
     t_open *open;
+    t_open *tail;
+    t_open *best_open;
+    t_myopen *my_open;
+    void *pool;
     char *map;
     char **arr;
     int arr_len;
@@ -45,6 +57,8 @@ struct par {
     int current_y;
     int list_len;
     int is_possible;
+    int lowest_fcost;
+    int counter;
 } typedef t_par;
 
 int get_lines_str(char *str);
@@ -79,7 +93,7 @@ int is_accessible(t_par *par, int x, int y);
 
 int get_pos(t_par *par, int x, int y);
 
-void remove_open(t_par *par, int x, int y);
+void remove_open (t_par *par, t_open *prev, t_open *old,int position);
 
 void discover_node(t_par *par, int x, int y, t_node *parent);
 

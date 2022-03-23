@@ -59,10 +59,9 @@ int main (int ac, char **av)
         printf("no solution found");
         free_list(par);
         free(par);
-        return 0;
+        return 12;
     }
     check_allsquares(par, 0, 0);
-    remove_open(par, 0, 0);
     astar(par);
     return 0;
 }

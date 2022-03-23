@@ -35,6 +35,5 @@ void free_linked(t_par *par)
         t_open *next = tmp2->next;
         free(tmp2);
         tmp2 = next;
-
     }
 }

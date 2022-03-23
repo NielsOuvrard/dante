@@ -16,6 +16,7 @@ void add_toopen (t_open **open, int x, int y, t_par *par)
     new_node->next = NULL;
     par->nodes[y][x].opened = 1;
     if (!(*open)) {
+        new_node->prev = NULL;
         *open = new_node;
     } else {
         t_open *tmp = *open;
@@ -23,6 +24,7 @@ void add_toopen (t_open **open, int x, int y, t_par *par)
             tmp = tmp->next;
         }
         tmp->next = new_node;
+        new_node->prev = tmp;
     }
 }
 
@@ -39,24 +41,17 @@ int get_pos (t_par *par, int x, int y)
     return -1;
 }
 
-void remove_open (t_par *par, int x, int y)
+void remove_open (t_par *par, t_open *prev, t_open *old,int position)
 {
-    int position = get_pos(par, x, y);
-    if (position < 0) {
-        return;
-    }
     t_open **open_list = &par->open;
-    t_open *node = *open_list;
-    t_open *tmp = node->next;
     par->list_len -= 1;
-    if (position == 0) {
-        (*open_list) = (*open_list) ->next;
+    if (*open_list == NULL || old == NULL)
         return;
-    }
-    for (int i = 0; i < position - 1; i++) {
-        node = node->next;
-        tmp = tmp->next;
-    }
-    node->next = tmp->next;
-    free(tmp);
+    if (*open_list == old)
+        *open_list = old->next;
+    if (old->next != NULL)
+        old->next->prev = old->prev;
+    if (old->prev != NULL)
+        old->prev->next = old->next;
+    free(old);
 }

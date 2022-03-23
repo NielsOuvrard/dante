@@ -11,9 +11,9 @@ void print_arr(t_par *par)
 {
     int i = 0;
     while (par->arr[i] != NULL) {
-        printf(par->arr[i]);
+        write(1, par->arr[i], par->str_len);
         if (i < par->end_y - 1) {
-            printf("%c", '\n');
+            write(1, "\n", 1);
         }
         i++;
     }
