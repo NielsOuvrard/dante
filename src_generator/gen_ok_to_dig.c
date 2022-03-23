@@ -66,8 +66,8 @@ sfVector2i infos)
     if (direction == 's')
         return is_okay_to_dig_s(maze, three, infos);
     if (direction == 'w')
-        return is_okay_to_dig_e(maze, three, infos);
-    if (direction == 'e')
         return is_okay_to_dig_w(maze, three, infos);
+    if (direction == 'e')
+        return is_okay_to_dig_e(maze, three, infos);
     return 0;
 }
