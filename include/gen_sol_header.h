@@ -13,6 +13,11 @@
 #include <math.h>
 #include <stdlib.h>
 
+typedef struct sfVector2i {
+    int x;
+    int y;
+}sfVector2i;
+
 typedef struct three_tree {
     char prev;
     int x;
@@ -49,22 +54,25 @@ int my_put_end_list (three_tree *list, int x, int y, char prev);
 
 int free_linked_list_tt (three_tree *list);
 
+// recursive dig
+
+three_tree *recursive_dig (char **maze, three_tree *three, sfVector2i infos);
+
 // recursive
 
-three_tree *recursive_dig (char **maze, three_tree *three);
+int is_okay_to_dig (char **maze, three_tree *three, char direction,
+sfVector2i infos);
 
-int is_okay_to_dig (char **maze, three_tree *three, char direction);
-
-three_tree *looking_for_new_way (char **maze, three_tree *three);
+three_tree *looking_for_new_way (char **maze, three_tree *three, sfVector2i infos);
 
 /// nsew dir
 
-three_tree *retry (char **maze, three_tree *three);
+three_tree *retry (char **maze, three_tree *three, sfVector2i infos);
 
-three_tree *north_dir (char **maze, three_tree *three);
+three_tree *north_dir (char **maze, three_tree *three, sfVector2i infos);
 
-three_tree *east_dir (char **maze, three_tree *three);
+three_tree *east_dir (char **maze, three_tree *three, sfVector2i infos);
 
-three_tree *south_dir (char **maze, three_tree *three);
+three_tree *south_dir (char **maze, three_tree *three, sfVector2i infos);
 
-three_tree *west_dir (char **maze, three_tree *three);
+three_tree *west_dir (char **maze, three_tree *three, sfVector2i infos);

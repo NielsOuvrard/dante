@@ -14,7 +14,7 @@ int random_int (int min, int max)
     return retour;
 }
 
-int gestion_erreur (int ac, char **av)                                          // others arguments ?
+int gestion_erreur (int ac, char **av)
 {
     if (ac < 2 || ac > 4)
         return 1;

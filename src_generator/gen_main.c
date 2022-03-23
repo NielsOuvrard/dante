@@ -23,34 +23,27 @@ char **fully_maze (int lignes, int cols)
 void dig_the_wall (char **maze)
 {
     maze[0][0] = '*';
-    int max_cols = my_strlen(maze[0]), max_lignes = my_arraylen(maze);
-    if (max_lignes >= 2 && max_cols >= 2) {
+    sfVector2i infos;
+    infos.x = my_strlen(maze[0]);
+    infos.y = my_arraylen(maze);
+    if (infos.y >= 2 && infos.x >= 2) {
         maze[0][1] = '*';
         maze[1][1] = '*';
         three_tree *three = NULL;
         three = my_put_in_list(three, 1, 1, 'n');
         three_tree *begin = three;
-        recursive_dig(maze, three);
+        recursive_dig(maze, three, infos);
         free_linked_list_tt(begin);
     }
-    for (int i = 0; maze[max_lignes - 2][max_cols - i] != '*'; i++)
-        maze[max_lignes - 1][max_cols - i - 1] = '*';
-    maze[max_lignes - 1][max_cols - 1] = '*';
+    for (int i = 0; maze[infos.y - 2][infos.x - i] != '*'; i++)
+        maze[infos.y - 1][infos.x - i - 1] = '*';
+    maze[infos.y - 1][infos.x - 1] = '*';
 }
 
 void disp_the_maze (char **maze)
 {
     for (int i = 0; maze[i] != NULL; i++) {
         my_putstr(maze[i]);
-        // for (int k = 0; maze[i][k] != '\0'; k++) {
-        //     if (maze[i][k] == 'X')
-        //         my_putstr("\e[94mX");
-        //     else if (maze[i][k] == '*')
-        //         // my_putstr(" ");
-        //         my_putstr("\e[92m*");
-        //     else
-        //         my_putchar(maze[i][k]);
-        // }
         if (maze[i + 1])
             my_putchar('\n');
     }
@@ -72,7 +65,6 @@ int create_maze (char **av)
         maze[1][0] = '*';
     }
     disp_the_maze(maze);
-    // my_show_word_array(maze);
     free_my_arr(maze);
     return 0;
 }
@@ -83,5 +75,3 @@ int main (int ac, char **av)
         return 84;
     return create_maze(av);
 }
-
-// my_putstr("no solution found\n");        // solver
