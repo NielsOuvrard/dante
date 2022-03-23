@@ -69,14 +69,3 @@ three_tree *test_test (char **maze, three_tree *three, sfVector2i infos)
     if (three->prev == 'w')
         return recursive_dig_w(maze, three, rando, infos);
 }
-
-three_tree *recursive_dig (char **maze, three_tree *three, sfVector2i infos)
-{
-    if (!three)
-        return three;
-    while (three && three->prev)
-        three = test_test(maze, three, infos);
-    return NULL;
-}
-
-// php 7.4.27

@@ -1,29 +1,5 @@
 {
     "files.associations": {
-        "gen_sol_header.h": "c",
-        "math.h": "c",
-        "__bit_reference": "c",
-        "__functional_base": "c",
-        "__node_handle": "c",
-        "algorithm": "c",
-        "atomic": "c",
-        "bitset": "c",
-        "chrono": "c",
-        "cstddef": "c",
-        "__memory": "c",
-        "functional": "c",
-        "iterator": "c",
-        "limits": "c",
-        "locale": "c",
-        "optional": "c",
-        "ratio": "c",
-        "system_error": "c",
-        "tuple": "c",
-        "type_traits": "c",
-        "vector": "c",
-        "memory": "c",
-        "ios": "c",
-        "my.h": "c",
-        "unistd.h": "c"
+        "gen_sol_header.h": "c"
     }
 }

@@ -56,6 +56,10 @@ int free_linked_list_tt (three_tree *list);
 
 // recursive dig
 
+three_tree *test_test (char **maze, three_tree *three, sfVector2i infos);
+
+// recursive dig2
+
 three_tree *recursive_dig (char **maze, three_tree *three, sfVector2i infos);
 
 // recursive

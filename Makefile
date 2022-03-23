@@ -42,4 +42,9 @@ push:
 		git commit -m "push automatique"
 		git push
 
-.PHONY: all clean fclean re push
+clean_mac:
+		rm vgcore.*
+		rm -R *.dSYM
+		rm -R .vscode
+
+.PHONY: all clean fclean re push clean_mac
