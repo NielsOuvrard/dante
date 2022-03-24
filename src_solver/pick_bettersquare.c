@@ -13,7 +13,7 @@ void pick_square (t_par *par)
     t_open *tmp = par->open;
     t_open *final = tmp;
     while (i != par->list_len) {
-        if (par->nodes[tmp->y][tmp->x].f_cost <= fcost) {
+        if (par->nodes[tmp->y][tmp->x].f_cost < fcost) {
             x = tmp->x;
             y = tmp->y;
             position = i;

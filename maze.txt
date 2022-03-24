@@ -1,5 +1,6 @@
-**XXX
-X**X*
-XX*X*
-*****
-XXXX*
+*****XX****X********XXXX
+XX******XX***XXXXX***XXX
+XX***XXXX**XXXXX****XXXX
+XX***XXXXXXXXXXXXXX****X
+*****XXXXXX****XX***XXXX
+XX*************XXXX*****
