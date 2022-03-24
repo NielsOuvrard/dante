@@ -41,7 +41,7 @@ int get_pos (t_par *par, int x, int y)
     return -1;
 }
 
-void remove_open (t_par *par, t_open *prev, t_open *old,int position)
+void remove_open (t_par *par, t_open *prev, t_open *old, int position)
 {
     t_open **open_list = &par->open;
     par->list_len -= 1;

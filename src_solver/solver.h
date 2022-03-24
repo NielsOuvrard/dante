@@ -93,7 +93,7 @@ int is_accessible(t_par *par, int x, int y);
 
 int get_pos(t_par *par, int x, int y);
 
-void remove_open (t_par *par, t_open *prev, t_open *old,int position);
+void remove_open (t_par *par, t_open *prev, t_open *old, int position);
 
 void discover_node(t_par *par, int x, int y, t_node *parent);
 

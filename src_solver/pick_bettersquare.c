@@ -9,11 +9,7 @@
 
 void pick_square (t_par *par)
 {
-    int x = 0;
-    int y = 0;
-    int fcost = 21474836;
-    int i = 0;
-    int position = 0;
+    int x = 0, y = 0, fcost = 21474836, i = 0, position = 0;
     t_open *tmp = par->open;
     t_open *final = tmp;
     while (i != par->list_len) {
