@@ -12,7 +12,8 @@ all:
 		@cp ./lib/my/libmy.a lib/libmy.a
 		# @gcc -o maze -g src/*.c -I./include/ -L./lib/my/ -lm -lmy -g3
 
-		@gcc -o generator_ -g src_generator/*.c -I./include/ -L./lib/my/ -lmy -g3
+		@gcc -o generator_ -g src_generator/*.c -I./include/ -L./lib/my/\
+		-lmy -g3
 		mv generator_ generator/generator
 
 		@gcc -o solver_ -g src_solver/*.c -I./include/ -L./lib/my/ -lmy -g3

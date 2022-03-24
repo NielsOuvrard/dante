@@ -16,7 +16,7 @@
 typedef struct sfVector2i {
     int x;
     int y;
-}sfVector2i;
+} sfVector2i;
 
 typedef struct three_tree {
     char prev;
@@ -62,7 +62,13 @@ three_tree *test_test (char **maze, three_tree *three, sfVector2i infos);
 
 three_tree *recursive_dig (char **maze, three_tree *three, sfVector2i infos);
 
-// recursive
+// ok to dig next
+
+int is_okay_to_dig_n (char **maze, three_tree *three, sfVector2i infos);
+
+int is_okay_to_dig_s (char **maze, three_tree *three, sfVector2i infos);
+
+// ok to dig
 
 int is_okay_to_dig (char **maze, three_tree *three, char direction,
 sfVector2i infos);
