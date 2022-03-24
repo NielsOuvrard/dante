@@ -35,9 +35,9 @@ void dig_the_wall (char **maze)
         recursive_dig(maze, three, infos);
         free_linked_list_tt(begin);
     }
-    // for (int i = 0; maze[infos.y - 2][infos.x - i] != '*'; i++)
-    //     maze[infos.y - 1][infos.x - i - 1] = '*';
-    // maze[infos.y - 1][infos.x - 1] = '*';
+    for (int i = 0; maze[infos.y - 2][infos.x - i] != '*'; i++)
+        maze[infos.y - 1][infos.x - i - 1] = '*';
+    maze[infos.y - 1][infos.x - 1] = '*';
 }
 
 void disp_the_maze (char **maze)
