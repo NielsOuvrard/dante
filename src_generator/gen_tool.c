@@ -25,11 +25,10 @@ int gestion_erreur (int ac, char **av)
     return 0;
 }
 
-void random_dig(char **maze, int i, int size)
+void random_dig(char **maze, int i, int size_x, int size_y)
 {
     for (int j = 0; maze[i][j]; j++) {
-        int val = random_int(0, size / size);
-        if (val == 0) {
+        if (!random_int(0, (size_x + size_y) / 10)) {
             maze[i][j] = '*';
         }
     }
@@ -39,6 +38,10 @@ int lignes_solo (int lignes, int cols)
 {
     if (lignes <= 0 || cols <= 0)
         return 0;
+    if (lignes == 2 && cols == 0) {
+        my_putstr("*X\n**");
+        return 0;
+    }
     if (lignes == 1) {
         for (int i = 0; i < cols; i++)
             my_putchar('*');

@@ -46,7 +46,7 @@ int random_int (int min, int max);
 
 int gestion_erreur (int ac, char **av);
 
-void random_dig(char **maze, int i, int size);
+void random_dig(char **maze, int i, int size_x, int size_y);
 
 int lignes_solo (int lignes, int cols);
 

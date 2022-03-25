@@ -62,9 +62,8 @@ int create_maze (char **av)
     char **maze = fully_maze(lignes, cols);
     dig_the_wall(maze);
     if (!perfect) {
-        int size = my_strlen(maze[0]);
         for (int i = 0; maze[i]; i++)
-            random_dig(maze, i, size);
+            random_dig(maze, i, cols, lignes);
     }
     disp_the_maze(maze);
     free_my_arr(maze);
