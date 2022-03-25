@@ -57,6 +57,8 @@ int create_maze (char **av)
         perfect = 1;
     lignes = my_getnbr(av[1]);
     cols = my_getnbr(av[2]);
+    if (!lignes_solo(lignes, cols))
+        return 0;
     char **maze = fully_maze(lignes, cols);
     dig_the_wall(maze);
     if (!perfect) {

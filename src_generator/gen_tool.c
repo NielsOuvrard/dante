@@ -34,3 +34,17 @@ void random_dig(char **maze, int i, int size)
         }
     }
 }
+
+int lignes_solo (int lignes, int cols)
+{
+    if (lignes == 1) {
+        for (int i = 0; i < cols; i++)
+            my_putchar('*');
+        return 0;
+    } else if (cols == 1) {
+        for (int i = 0; i < lignes; i++)
+            my_putchar('*');
+        return 0;
+    }
+    return 1;
+}
