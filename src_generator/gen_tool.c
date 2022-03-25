@@ -24,3 +24,13 @@ int gestion_erreur (int ac, char **av)
         return 3;
     return 0;
 }
+
+void random_dig(char **maze, int i, int size)
+{
+    for (int j = 0; maze[i][j]; j++) {
+        int val = random_int(0, size / size);
+        if (val == 0) {
+            maze[i][j] = '*';
+        }
+    }
+}

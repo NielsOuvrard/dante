@@ -46,6 +46,8 @@ int random_int (int min, int max);
 
 int gestion_erreur (int ac, char **av);
 
+void random_dig(char **maze, int i, int size);
+
 // linked list tt
 
 three_tree *my_put_in_list (three_tree *list, int x, int y, char suiv);
