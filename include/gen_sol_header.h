@@ -77,7 +77,8 @@ int is_okay_to_dig_s (char **maze, three_tree *three, sfVector2i infos);
 int is_okay_to_dig (char **maze, three_tree *three, char direction,
 sfVector2i infos);
 
-three_tree *looking_for_new_way (char **maze, three_tree *three, sfVector2i infos);
+three_tree *looking_for_new_way (char **maze, three_tree *three,
+sfVector2i infos);
 
 /// nsew dir
 
