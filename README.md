@@ -27,8 +27,9 @@ To generate a maze with a width of 10 and a height of 5 and solve it, run the fo
 ```bash
 ./generator/generator 10 5 > maze1.txt
 ./solver/solver maze1.txt
-
-
+```
+To generate a perfect maze with a width of 12 and a height of 20 and solve it, run the following commands:
+```bash
 ./generator/generator 12 20 perfect > maze2.txt
 ./solver/solver maze2.txt
 ```
